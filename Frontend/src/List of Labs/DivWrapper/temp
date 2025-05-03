@@ -1,0 +1,1527 @@
+import React, { useState } from "react";
+import { LabOverview } from "../../Lab Overview/LabOverview";
+export const DivWrapper = ({ onViewProfile }) => {
+const [showLabOverview, setShowLabOverview] = useState(false);
+
+return (
+<>
+    <div className="flex flex-col w-[1580px] items-start gap-5 absolute top-[441px] left-[60px]">
+        <div
+            className="flex flex-col w-[1060px] h-[276px] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]">
+            <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex items-end relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-col w-[967px] h-[104px] items-start gap-2.5 relative">
+                        <div
+                            className="flex w-[969px] h-[188px] items-start gap-[18px] relative mb-[-84.00px] mr-[-2.00px]">
+                            <div className="flex w-[969px] items-center gap-[18px] relative">
+                                <img className="relative w-[106px] h-[106px] object-cover" alt="Image"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/image-4.png" />
+
+                                <div className="flex flex-col w-[845px] h-[106px] items-start gap-1.5 relative">
+                                    <div
+                                        className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+                                        <div className="inline-flex items-center gap-1.5 relative flex-[0_0_auto]">
+                                            <div
+                                                className="relative w-fit mt-[-1.04px] [font-family:'Nunito_Sans',Helvetica] font-bold text-[#202224] text-xl tracking-[-0.12px] leading-[normal]">
+                                                {lab.company_name}
+                                            </div>
+
+                                            <img className="relative w-5 h-5" alt="Shield trust"
+                                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/shield-trust-1.svg" />
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+                                            <div
+                                                className="flex w-[38px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative rounded-[25px] border-[1.04px] border-solid border-[#dddddd] shadow-[0px_0px_12px_#0000000d]">
+                                                <img className="relative w-6 h-6" alt="Bookmark"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/bookmark-1.svg" />
+                                            </div>
+
+                                            <div
+                                                className="flex w-[148px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative bg-[#6161ff] rounded-[25px]">
+                                                <img className="relative w-6 h-6" alt="Akar icons link out"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/akar-icons-link-out.svg" />
+
+                                                <div
+                                                    className="w-fit font-medium text-white text-sm tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                                    Visit Website
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex w-[741px] items-end gap-[65px] relative flex-[0_0_auto]">
+                                        <div className="inline-flex items-start gap-8 relative flex-[0_0_auto]">
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Features alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/features-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Accreditation:
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            {lab.accreditation}
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex w-[277px] items-center gap-2 relative flex-[0_0_auto] mr-[-10.00px]">
+                                                    <img className="relative w-6 h-6" alt="Land layer location"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/land-layer-location-1.svg" />
+
+                                                    <p
+                                                        className="w-[245px] font-normal text-transparent relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Location
+                                                        </span>
+
+                                                        <span className="text-[#3e3e3e] tracking-[-0.01px]">
+                                                            :
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            {lab.location}
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Phone call"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/phone-call-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Contact:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {lab.contact}
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Talent alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/talent-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Expertise:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;&nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {lab.expertise}
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Hotel"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/hotel-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Industry/Applications:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Automotive
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Commercial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    {" "}
+                                    Electronics
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Industrial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Medical...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+
+                    <img className="relative w-[969px] h-[1.51px]" alt="Line"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Compliance document"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/compliance-document-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Testing Services:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    SAR
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Electrostatic Discharge
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Surge Testing
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Harmonic and Flicker Testing...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <img className="relative w-[969px] h-[1.51px] mr-[-1.00px]" alt="Line"
+                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+            <div className="flex items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-0.01px]">
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <div className="relative w-6 h-6">
+                        <img className="absolute w-[19px] h-[21px] top-0.5 left-[3px]" alt="Group"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/group-3.png" />
+                    </div>
+
+                    <div
+                        className="w-fit font-medium text-[#d50000] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Delete
+                    </div>
+                </div>
+                <div className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd] cursor-pointer"
+                    onClick={()=> setShowLabOverview(true)}
+                    >
+                    <img className="relative w-6 h-6" alt="Building user"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/building-user--1--1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        <button onClick={onViewProfile}>View Profile</button>
+
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Comment"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/comment-1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Get Quote
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            className="flex flex-col w-[1060px] h-[276px] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]">
+            <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex items-end relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-col w-[967px] h-[104px] items-start gap-2.5 relative">
+                        <div
+                            className="flex w-[969px] h-[188px] items-start gap-[18px] relative mb-[-84.00px] mr-[-2.00px]">
+                            <div className="flex w-[969px] items-center gap-[18px] relative">
+                                <img className="relative w-[106px] h-[106px] object-cover" alt="Image"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/image-5.png" />
+
+                                <div className="flex flex-col w-[845px] h-[106px] items-start gap-1.5 relative">
+                                    <div
+                                        className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+                                        <div className="inline-flex items-center gap-1.5 relative flex-[0_0_auto]">
+                                            <div
+                                                className="relative w-fit mt-[-1.04px] [font-family:'Nunito_Sans',Helvetica] font-bold text-[#202224] text-xl tracking-[-0.12px] leading-[normal]">
+                                                Austest Laboratories
+                                            </div>
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+                                            <div
+                                                className="flex w-[38px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative rounded-[25px] border-[1.04px] border-solid border-[#dddddd] shadow-[0px_0px_12px_#0000000d]">
+                                                <img className="relative w-6 h-6" alt="Bookmark"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/bookmark-1.svg" />
+                                            </div>
+
+                                            <div
+                                                className="flex w-[148px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative bg-[#6161ff] rounded-[25px]">
+                                                <img className="relative w-6 h-6" alt="Akar icons link out"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/akar-icons-link-out.svg" />
+
+                                                <div
+                                                    className="w-fit font-medium text-white text-sm tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                                    Visit Website
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex w-[741px] items-end gap-[65px] relative flex-[0_0_auto]">
+                                        <div className="inline-flex items-start gap-8 relative flex-[0_0_auto]">
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Features alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/features-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Accreditation:
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            A2LA
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex w-[277px] items-center gap-2 relative flex-[0_0_auto] mr-[-10.00px]">
+                                                    <img className="relative w-6 h-6" alt="Land layer location"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/land-layer-location-1.svg" />
+
+                                                    <p
+                                                        className="w-[245px] font-normal text-transparent relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Location
+                                                        </span>
+
+                                                        <span className="text-[#3e3e3e] tracking-[-0.01px]">
+                                                            :
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            99 Great Gulf Drive Unit #2&nbsp;&nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Phone call"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/phone-call-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Contact:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            9876543210
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Talent alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/talent-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Expertise:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;&nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            Lorem ipsum
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Hotel"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/hotel-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Industry/Applications:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Automotive
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Commercial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    {" "}
+                                    Electronics
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Industrial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Medical...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+
+                    <img className="relative w-[969px] h-[1.51px]" alt="Line"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Compliance document"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/compliance-document-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Testing Services:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    SAR
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Electrostatic Discharge
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Surge Testing
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Harmonic and Flicker Testing...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <img className="relative w-[969px] h-[1.51px] mr-[-1.00px]" alt="Line"
+                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+            <div className="flex items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-0.01px]">
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <div className="relative w-6 h-6">
+                        <img className="absolute w-[19px] h-[21px] top-0.5 left-[3px]" alt="Group"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/group-3-1.png" />
+                    </div>
+
+                    <div
+                        className="w-fit font-medium text-[#d50000] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Delete
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Building user"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/building-user--1--1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        View Profile
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Comment"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/comment-1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Get Quote
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            className="flex flex-col w-[1060px] h-[276px] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]">
+            <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex items-end relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-col w-[967px] h-[104px] items-start gap-2.5 relative">
+                        <div
+                            className="flex w-[969px] h-[188px] items-start gap-[18px] relative mb-[-84.00px] mr-[-2.00px]">
+                            <div className="flex w-[969px] items-center gap-[18px] relative">
+                                <img className="relative w-[106px] h-[106px] object-cover" alt="Image"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/image-7.png" />
+
+                                <div className="flex flex-col w-[845px] h-[106px] items-start gap-1.5 relative">
+                                    <div
+                                        className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+                                        <div className="inline-flex items-center gap-1.5 relative flex-[0_0_auto]">
+                                            <div
+                                                className="relative w-fit mt-[-1.04px] [font-family:'Nunito_Sans',Helvetica] font-bold text-[#202224] text-xl tracking-[-0.12px] leading-[normal]">
+                                                MEGALAB Group Inc. (Electrical)
+                                            </div>
+
+                                            <img className="relative w-5 h-5" alt="Shield trust"
+                                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/shield-trust-1.svg" />
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+                                            <div
+                                                className="flex w-[38px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative rounded-[25px] border-[1.04px] border-solid border-[#dddddd] shadow-[0px_0px_12px_#0000000d]">
+                                                <img className="relative w-6 h-6" alt="Bookmark"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/bookmark-1.svg" />
+                                            </div>
+
+                                            <div
+                                                className="flex w-[148px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative bg-[#6161ff] rounded-[25px]">
+                                                <img className="relative w-6 h-6" alt="Akar icons link out"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/akar-icons-link-out.svg" />
+
+                                                <div
+                                                    className="w-fit font-medium text-white text-sm tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                                    Visit Website
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex w-[741px] items-end gap-[65px] relative flex-[0_0_auto]">
+                                        <div className="inline-flex items-start gap-8 relative flex-[0_0_auto]">
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Features alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/features-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Accreditation:
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            A2LA
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex w-[277px] items-center gap-2 relative flex-[0_0_auto] mr-[-10.00px]">
+                                                    <img className="relative w-6 h-6" alt="Land layer location"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/land-layer-location-1.svg" />
+
+                                                    <p
+                                                        className="w-[245px] font-normal text-transparent relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Location
+                                                        </span>
+
+                                                        <span className="text-[#3e3e3e] tracking-[-0.01px]">
+                                                            :
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            99 Great Gulf Drive Unit #2&nbsp;&nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Phone call"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/phone-call-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Contact:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            9876543210
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Talent alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/talent-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Expertise:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;&nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            Lorem ipsum
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Hotel"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/hotel-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Industry/Applications:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Automotive
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Commercial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    {" "}
+                                    Electronics
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Industrial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Medical...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+
+                    <img className="relative w-[969px] h-[1.51px]" alt="Line"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Compliance document"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/compliance-document-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Testing Services:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    SAR
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Electrostatic Discharge
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Surge Testing
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Harmonic and Flicker Testing...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <img className="relative w-[969px] h-[1.51px] mr-[-1.00px]" alt="Line"
+                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+            <div className="flex items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-0.01px]">
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <div className="relative w-6 h-6">
+                        <img className="absolute w-[19px] h-[21px] top-0.5 left-[3px]" alt="Group"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/group-3-2.png" />
+                    </div>
+
+                    <div
+                        className="w-fit font-medium text-[#d50000] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Delete
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Building user"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/building-user--1--1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        View Profile
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Comment"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/comment-1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Get Quote
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            className="flex flex-col w-[1060px] h-[276px] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]">
+            <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex items-end relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-col w-[967px] h-[104px] items-start gap-2.5 relative">
+                        <div
+                            className="flex w-[969px] h-[188px] items-start gap-[18px] relative mb-[-84.00px] mr-[-2.00px]">
+                            <div className="flex w-[969px] items-center gap-[18px] relative">
+                                <div
+                                    className="flex w-[106px] h-[106px] items-center justify-center gap-2.5 p-2.5 relative bg-white rounded-2xl border border-solid border-[#cccccccc]">
+                                    <img className="relative w-20 h-20 object-cover" alt="Image"
+                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/image-5-1.png" />
+                                </div>
+
+                                <div className="flex flex-col w-[845px] h-[106px] items-start gap-1.5 relative">
+                                    <div
+                                        className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+                                        <div className="inline-flex items-center gap-1.5 relative flex-[0_0_auto]">
+                                            <div
+                                                className="relative w-fit mt-[-1.04px] [font-family:'Nunito_Sans',Helvetica] font-bold text-[#202224] text-xl tracking-[-0.12px] leading-[normal]">
+                                                QPS Evaluation Services, Inc.
+                                            </div>
+
+                                            <img className="relative w-5 h-5" alt="Shield trust"
+                                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/shield-trust-1.svg" />
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+                                            <div
+                                                className="flex w-[38px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative rounded-[25px] border-[1.04px] border-solid border-[#dddddd] shadow-[0px_0px_12px_#0000000d]">
+                                                <img className="relative w-6 h-6" alt="Bookmark"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/bookmark-1.svg" />
+                                            </div>
+
+                                            <div
+                                                className="flex w-[148px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative bg-[#6161ff] rounded-[25px]">
+                                                <img className="relative w-6 h-6" alt="Akar icons link out"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/akar-icons-link-out.svg" />
+
+                                                <div
+                                                    className="w-fit font-medium text-white text-sm tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                                    Visit Website
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex w-[741px] items-end gap-[65px] relative flex-[0_0_auto]">
+                                        <div className="inline-flex items-start gap-8 relative flex-[0_0_auto]">
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Features alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/features-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Accreditation:
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            A2LA
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex w-[277px] items-center gap-2 relative flex-[0_0_auto] mr-[-10.00px]">
+                                                    <img className="relative w-6 h-6" alt="Land layer location"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/land-layer-location-1.svg" />
+
+                                                    <p
+                                                        className="w-[245px] font-normal text-transparent relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Location
+                                                        </span>
+
+                                                        <span className="text-[#3e3e3e] tracking-[-0.01px]">
+                                                            :
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            99 Great Gulf Drive Unit #2&nbsp;&nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Phone call"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/phone-call-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Contact:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            9876543210
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Talent alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/talent-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Expertise:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;&nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            Lorem ipsum
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Hotel"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/hotel-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Industry/Applications:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Automotive
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Commercial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    {" "}
+                                    Electronics
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Industrial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Medical...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+
+                    <img className="relative w-[969px] h-[1.51px]" alt="Line"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Compliance document"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/compliance-document-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Testing Services:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    SAR
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Electrostatic Discharge
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Surge Testing
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Harmonic and Flicker Testing...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <img className="relative w-[969px] h-[1.51px] mr-[-1.00px]" alt="Line"
+                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+            <div className="flex items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-0.01px]">
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <div className="relative w-6 h-6">
+                        <img className="absolute w-[19px] h-[21px] top-0.5 left-[3px]" alt="Group"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/group-3-3.png" />
+                    </div>
+
+                    <div
+                        className="w-fit font-medium text-[#d50000] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Delete
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Building user"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/building-user--1--1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        View Profile
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Comment"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/comment-1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Get Quote
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            className="flex flex-col w-[1060px] h-[276px] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]">
+            <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex items-end relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-col w-[967px] h-[104px] items-start gap-2.5 relative">
+                        <div
+                            className="flex w-[969px] h-[188px] items-start gap-[18px] relative mb-[-84.00px] mr-[-2.00px]">
+                            <div className="flex w-[969px] items-center gap-[18px] relative">
+                                <img className="relative w-[106px] h-[106px] object-cover" alt="Image"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/image-8.png" />
+
+                                <div className="flex flex-col w-[845px] h-[106px] items-start gap-1.5 relative">
+                                    <div
+                                        className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+                                        <div className="inline-flex items-center gap-1.5 relative flex-[0_0_auto]">
+                                            <div
+                                                className="relative w-fit mt-[-1.04px] [font-family:'Nunito_Sans',Helvetica] font-bold text-[#202224] text-xl tracking-[-0.12px] leading-[normal]">
+                                                Celltech Labs Inc.
+                                            </div>
+
+                                            <img className="relative w-5 h-5" alt="Shield trust"
+                                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/shield-trust-1.svg" />
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+                                            <div
+                                                className="flex w-[38px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative rounded-[25px] border-[1.04px] border-solid border-[#dddddd] shadow-[0px_0px_12px_#0000000d]">
+                                                <img className="relative w-6 h-6" alt="Bookmark"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/bookmark-1.svg" />
+                                            </div>
+
+                                            <div
+                                                className="flex w-[148px] h-[38px] items-center justify-center gap-[10.42px] p-[4.17px] relative bg-[#6161ff] rounded-[25px]">
+                                                <img className="relative w-6 h-6" alt="Akar icons link out"
+                                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/akar-icons-link-out.svg" />
+
+                                                <div
+                                                    className="w-fit font-medium text-white text-sm tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                                    Visit Website
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex w-[741px] items-end gap-[65px] relative flex-[0_0_auto]">
+                                        <div className="inline-flex items-start gap-8 relative flex-[0_0_auto]">
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Features alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/features-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Accreditation:
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            A2LA
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex w-[277px] items-center gap-2 relative flex-[0_0_auto] mr-[-10.00px]">
+                                                    <img className="relative w-6 h-6" alt="Land layer location"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/land-layer-location-1.svg" />
+
+                                                    <p
+                                                        className="w-[245px] font-normal text-transparent relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Location
+                                                        </span>
+
+                                                        <span className="text-[#3e3e3e] tracking-[-0.01px]">
+                                                            :
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            {" "}
+                                                            99 Great Gulf Drive Unit #2&nbsp;&nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col w-[267px] items-start gap-3.5 relative">
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Phone call"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/phone-call-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Contact:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            9876543210
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                                                    <img className="relative w-6 h-6" alt="Talent alt"
+                                                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/talent-alt-1.svg" />
+
+                                                    <p
+                                                        className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-transparent text-sm tracking-[-0.06px] leading-[normal]">
+                                                        <span
+                                                            className="font-semibold text-[#3e3e3e] tracking-[-0.01px]">
+                                                            Expertise:
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;&nbsp;
+                                                        </span>
+
+                                                        <span className="text-[#5c5c5c] tracking-[-0.01px]">
+                                                            Lorem ipsum
+                                                        </span>
+
+                                                        <span
+                                                            className="font-semibold text-[#5c5c5c] tracking-[-0.01px]">
+                                                            &nbsp;
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Hotel"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/hotel-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Industry/Applications:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Automotive
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Commercial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    {" "}
+                                    Electronics
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Industrial
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Medical...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+
+                    <img className="relative w-[969px] h-[1.51px]" alt="Line"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+                            <img className="relative w-6 h-6" alt="Compliance document"
+                                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/compliance-document-1.svg" />
+
+                            <div
+                                className="w-fit font-semibold text-[#3e3e3e] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                                Testing Services:
+                            </div>
+
+                            <div className="inline-flex items-center gap-[18px] relative flex-[0_0_auto]">
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    SAR
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Electrostatic Discharge
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Surge Testing
+                                </div>
+
+                                <img className="relative w-px h-[18px] object-cover" alt="Line"
+                                    src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-11.svg" />
+
+                                <div
+                                    className="w-fit mt-[-1.00px] font-normal text-[#5c5c5c] text-sm tracking-[-0.06px] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
+                                    Harmonic and Flicker Testing...
+                                </div>
+                            </div>
+                        </div>
+
+                        <img className="relative w-6 h-6" alt="Angle small down"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <img className="relative w-[969px] h-[1.51px] mr-[-1.00px]" alt="Line"
+                src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg" />
+
+            <div className="flex items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-0.01px]">
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <div className="relative w-6 h-6">
+                        <img className="absolute w-[19px] h-[21px] top-0.5 left-[3px]" alt="Group"
+                            src="https://c.animaapp.com/ma15u5wlRvwvT0/img/group-3-4.png" />
+                    </div>
+
+                    <div
+                        className="w-fit font-medium text-[#d50000] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Delete
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Building user"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/building-user--1--1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        View Profile
+                    </div>
+                </div>
+
+                <div
+                    className="flex w-[317px] items-center justify-center gap-2 px-0 py-1 relative rounded-2xl border border-solid border-[#dddddd]">
+                    <img className="relative w-6 h-6" alt="Comment"
+                        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/comment-1.svg" />
+
+                    <div
+                        className="w-fit font-medium text-[#6161ff] relative [font-family:'Nunito_Sans',Helvetica] text-sm tracking-[-0.06px] leading-[normal]">
+                        Get Quote
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</>
+);
+};
