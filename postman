@@ -1,0 +1,103 @@
+POST = http://localhost:8080/api/labs
+
+{
+            "id": "6815de786cc450a720ec54bb",
+            "user_id": null,
+            "company_name": "METSCO Energy Solutions Inc.",
+            "verified": true,
+            "logo": "METSCO logo",
+            "accreditation": "A2LA",
+            "contact": 9876543210,
+            "location": "99 Great Gulf Drive Unit #2",
+            "expertise": "Electromagnetic Testing",
+            "industries": [
+                "Automotive",
+                "Electronics",
+                "Medical"
+            ],
+            "testingServices": [
+                "SAR",
+                "Electrostatic Discharge"
+            ],
+            "description": "We specialize in various EM compliance certifications.",
+            "profile_menu": {
+                "additional_location": [
+                    {
+                        "country": "Canada",
+                        "state": "British Columbia",
+                        "city": "Burnaby"
+                    },
+                    {
+                        "country": "United States",
+                        "state": "Oklahoma",
+                        "city": "Tulsa"
+                    },
+                    {
+                        "country": "Canada",
+                        "state": "Ontario",
+                        "city": "Toronto"
+                    },
+                    {
+                        "country": "United States",
+                        "state": "Ohio",
+                        "city": "Cleveland"
+                    },
+                    {
+                        "country": "United States",
+                        "state": "California",
+                        "city": "Rancho Cucamonga"
+                    }
+                ],
+                "test_lab_capabilities": {
+                    "Applications": [
+                        "Medical Equipments",
+                        "Automotive Components"
+                    ],
+                    "International_Approvals": [
+                        "CE",
+                        "FCC"
+                    ],
+                    "Test_Services": [
+                        "SAR",
+                        "Electrostatic Discharge",
+                        "Surge",
+                        "Harmonic and Filter Testing",
+                        "Pre-Compliance Testing",
+                        "MIL-STP-461 Testing"
+                    ],
+                    "Services": [
+                        "Design Testing",
+                        "Calibration",
+                        "Manufacturing Assistance",
+                        "Mitigation",
+                        "Risk Analysis",
+                        "Development Testing"
+                    ],
+                    "Customer_Onsite_Testing": [
+                        "Yes"
+                    ],
+                    "Accredited_Laboratory": [
+                        "Yes"
+                    ]
+                },
+                "testing_standards_supported": {
+                    "CISPR": [
+                        "CISPR 16-1-1",
+                        "CISPR 16-1-2",
+                        "CISPR 16-1-3",
+                        "CISPR 16-1-4",
+                        "CISPR 16-1-5"
+                    ],
+                    "American_Standards": [
+                        "FCC Part 15",
+                        "IEEE/ANSI C63.10",
+                        "IEEE/ANSI C63.17",
+                        "IEEE/ANSI C63.4"
+                    ]
+                },
+                "social_links": [
+                    "facebook",
+                    "linkedin",
+                    "Email"
+                ]
+            },
