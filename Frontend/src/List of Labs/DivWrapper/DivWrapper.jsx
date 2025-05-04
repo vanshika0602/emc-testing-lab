@@ -82,11 +82,13 @@ const LabInfoSection = ({ industries = [], testingServices = [] }) => {
 export const DivWrapper = () => {
   const [lab, setLabs] = useState([]);
   const [showLabOverview, setShowLabOverview] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchLabs = async () => {
       try {
         const response = await axios.get("http://localhost:8080/api/labs");
+        console.log("Labs fetched:", response.data); // 👈 Check the structure
         setLabs(response.data.data);
       } catch (error) {
         console.error("Error fetching lab data", error);
@@ -111,7 +113,7 @@ export const DivWrapper = () => {
           ) : (
             lab.map((lab) => (
               <div
-                key={lab._id}
+                key={lab.id}
                 className="flex flex-col w-[1060px] h-[auto] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]"
               >
                 <div className="flex items-end w-full">
@@ -231,7 +233,7 @@ export const DivWrapper = () => {
                       Delete
                     </div>
                   </div>
-                  <a href="/lab/${id}"
+                  <button onClick={() => navigate(`/lab/${lab.id}`)}
                     className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer"
                     
                   >
@@ -243,7 +245,7 @@ export const DivWrapper = () => {
                     <div className="text-sm text-[#6161ff] font-medium">
                       View Profile
                     </div>
-                  </a>
+                  </button>
                   <div className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer">
                     <img
                       className="w-6 h-6"
