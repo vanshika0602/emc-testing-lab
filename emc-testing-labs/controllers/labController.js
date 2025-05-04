@@ -22,8 +22,6 @@ exports.createLab = async (req, res) => {
     }
 };
 
-
-
 // GET all labs
 exports.getAllLabs = async (req, res) => {
     try {
@@ -45,21 +43,18 @@ exports.getAllLabs = async (req, res) => {
 exports.getLabDescription = async (req, res) => {
     try {
         const lab = await Lab.findById(req.params.labId).populate('user_id', 'email');
-        // console.log(lab);
 
-        if (!lab) return res.status(404).json({ success: false, message: 'Lab not found' });
-        // console.log('heheo');
-        
-        
-        res.status(200).json({ success: true, data: lab });
+        if (!lab) {
+            return res.status(404).json({ success: false, message: 'Lab not found' });
+        }
 
+        const labObj = lab.toObject({ versionKey: false });
+        const { _id, ...rest } = labObj;
+        const responseData = { id: _id.toString(), ...rest };
+
+        res.status(200).json({ success: true, data: responseData });
     } catch (err) {
-        
         res.status(500).json({ success: false, message: err.message });
     }
-}
-
-null
-""
-"bhbcjwbci"
+};
 
