@@ -1,16 +1,17 @@
-in controllers  create a folder of name apiControllers and in that create a file name labController.js and in that file put this code below
-
-
-const Lab = require('../../models/labsModel');  // ✅ Ensure correct model path
+// controllers/labOverviewController.js
+const mongoose = require('mongoose');
+const Lab = require('../../models/labsModel');
 
 exports.getLabDescription = async (req, res) => {
-    try {
-        const lab = await Lab.findById(req.params.labId);
-        console.log("Fetched Lab from DB:", lab);
+    const labId = req.params.labId;
+    console.log('Received lab ID:', labId);
 
-        if(!mongoose.Types.ObjectId.isValid(req.params.labId)) {
-            return res.status(400).json({ success: false, message: "Invalid lab ID" });
-        }
+    if (!mongoose.Types.ObjectId.isValid(labId)) {
+        return res.status(400).json({ success: false, message: "Invalid lab ID" });
+    }
+
+    try {
+        const lab = await Lab.findById(labId);
         if (!lab) {
             return res.status(404).json({ success: false, message: 'Lab not found' });
         }
@@ -25,3 +26,50 @@ exports.getLabDescription = async (req, res) => {
     }
 };
 
+exports.filterLabs = async (req, res) => {
+    const filters = {};
+
+    // Extract filters from query params
+    const {
+        company_name,
+        location,
+        expertise,
+        accreditation,
+        industries,
+        testingServices
+    } = req.query;
+
+    // Add filters to the query object based on the incoming request
+    if (company_name) {
+        filters.company_name = new RegExp(company_name, 'i');  // Case-insensitive search
+    }
+    if (location) {
+        filters.location = new RegExp(location, 'i');  // Case-insensitive search
+    }
+    if (expertise) {
+        filters.expertise = new RegExp(expertise, 'i');  // Case-insensitive search
+    }
+    if (accreditation) {
+        filters.accreditation = new RegExp(accreditation, 'i');  // Case-insensitive search
+    }
+    if (industries) {
+        // Assuming industries is an array, we'll filter by the array
+        filters.industries = { $all: industries.split(',') };  // Example: industries=Automotive,Electronics
+    }
+    if (testingServices) {
+        // Assuming testingServices is an array, we'll filter by the array
+        filters.testingServices = { $all: testingServices.split(',') };  // Example: testingServices=SAR,ESD
+    }
+
+    try {
+        const labs = await Lab.find(filters);
+
+        if (labs.length === 0) {
+            return res.status(404).json({ success: false, message: 'No labs found matching the filters' });
+        }
+
+        res.status(200).json({ success: true, data: labs });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
