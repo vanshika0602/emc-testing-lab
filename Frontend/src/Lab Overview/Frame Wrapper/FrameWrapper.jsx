@@ -11,7 +11,7 @@ export const FrameWrapper = () => {
         if (Array.isArray(response.data)) {
           setLabs(response.data);
         } else {
-          console.error("Expected an array but got:", response.data);
+          console.error("Expected an array but got:", response.data.data);
         }
       } catch (error) {
         console.error("Error fetching lab data", error);
