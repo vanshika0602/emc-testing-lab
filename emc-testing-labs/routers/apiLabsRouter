@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+const labController = require('../controllers/apiControllers/labController'); // Adjust path as needed
+const { route } = require('./labsRouter');
+
+// Get Lab for the requested ID
+router.get('/:labId', labController.getLabDescription);
+
+module.exports = router;
