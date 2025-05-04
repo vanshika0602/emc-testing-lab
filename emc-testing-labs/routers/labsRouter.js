@@ -9,7 +9,7 @@ router.post('/', labController.createLab);
 router.get('/', labController.getAllLabs);
 
 // Get labs profile
-router.get('/lab/:id', labController.getLabDescription);
+router.get('/labs/:labId', labController.getLabDescription);
 
 // You can also add other routes like get by ID, update, delete in future
 
