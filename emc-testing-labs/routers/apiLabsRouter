@@ -1,6 +1,6 @@
 const express = require('express');
 const apiRouter = express.Router();
-const labController = require('../controllers/apiControllers/labOverviewController');
+const labController = require('../controllers/apiController');
 
 // Get Lab for the requested ID
 apiRouter.get('/:labId', labController.getLabDescription);
