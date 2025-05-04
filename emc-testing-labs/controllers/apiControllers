@@ -1,1 +1,27 @@
+in controllers  create a folder of name apiControllers and in that create a file name labController.js and in that file put this code below
+
+
+const Lab = require('../../models/labsModel');  // ✅ Ensure correct model path
+
+exports.getLabDescription = async (req, res) => {
+    try {
+        const lab = await Lab.findById(req.params.labId);
+        console.log("Fetched Lab from DB:", lab);
+
+        if(!mongoose.Types.ObjectId.isValid(req.params.labId)) {
+            return res.status(400).json({ success: false, message: "Invalid lab ID" });
+        }
+        if (!lab) {
+            return res.status(404).json({ success: false, message: 'Lab not found' });
+        }
+
+        const labObj = lab.toObject({ versionKey: false });
+        const { _id, ...rest } = labObj;
+        const responseData = { id: _id.toString(), ...rest };
+
+        res.status(200).json({ success: true, data: responseData });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
 
