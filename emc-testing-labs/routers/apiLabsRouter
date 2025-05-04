@@ -1,9 +1,11 @@
 const express = require('express');
-const router = express.Router();
-const labController = require('../controllers/apiControllers/labController'); // Adjust path as needed
-const { route } = require('./labsRouter');
+const apiRouter = express.Router();
+const labController = require('../controllers/apiControllers/labOverviewController');
 
 // Get Lab for the requested ID
-router.get('/:labId', labController.getLabDescription);
+apiRouter.get('/:labId', labController.getLabDescription);
 
-module.exports = router;
+// Get filtered values
+apiRouter.get('/filter', labController.filterLabs);
+
+module.exports = apiRouter;
