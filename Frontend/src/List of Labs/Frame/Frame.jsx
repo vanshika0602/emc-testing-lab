@@ -3,27 +3,33 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 export const Frame = () => {
-  const { id } = useParams(); // <-- grabs the lab ID
+  const { labId } = useParams();
   const [lab, setLab] = useState(null);
 
   useEffect(() => {
     const fetchLab = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/labs/${id}`
-        );
-        setLab(response.data.data[1]); // or response.data depending on your backend
-      } catch (error) {
-        console.error("Error fetching lab data", error);
+        console.log("Lab ID:", labId);  // Debug log
+        if (!labId) {
+          console.error("Lab ID is missing");
+          return;
+        }
+        
+        const res = await axios.get(`http://localhost:8080/api/lab-overview/${labId}`);
+        setLab(res.data.data);  // This updates the state 'lab' with the response data
+      } catch (err) {
+        console.error("Error fetching lab data", err);
       }
     };
-
-    fetchLab();
-  }, [id]);
+  
+    if (labId) {
+      fetchLab();
+    }
+  }, [labId]);  
 
   if (!lab) return <div>Loading...</div>;
 
-  return lab.data.map((lab) => (
+  return  (
     <div
       key={lab.id}
       className="flex flex-col w-[1375px] items-start gap-2.5 p-5 absolute top-[193px] left-[30px] bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#00000008]"
@@ -208,5 +214,5 @@ export const Frame = () => {
         </div>
       </div>
     </div>
-  ));
+  );
 };
