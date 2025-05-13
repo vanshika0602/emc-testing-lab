@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { LabOverview } from "../../Lab Overview/LabOverview";
 
-
 const LabInfoSection = ({ industries = [], testingServices = [] }) => {
   const renderListWithSeparators = (items) => {
     return items.map((item, index) => (
@@ -23,7 +22,6 @@ const LabInfoSection = ({ industries = [], testingServices = [] }) => {
   };
 
   return (
-    
     <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full">
       {/* Industry / Applications */}
       <div className="flex items-center justify-between self-stretch w-full">
@@ -46,13 +44,6 @@ const LabInfoSection = ({ industries = [], testingServices = [] }) => {
           src="https://c.animaapp.com/ma15u5wlRvwvT0/img/angle-small-down.svg"
         />
       </div>
-
-      {/* Divider */}
-      <img
-        className="w-[969px] h-[1.51px]"
-        alt="Divider"
-        src="https://c.animaapp.com/ma15u5wlRvwvT0/img/line-9.svg"
-      />
 
       {/* Testing Services */}
       <div className="flex items-center justify-between self-stretch w-full">
@@ -79,43 +70,104 @@ const LabInfoSection = ({ industries = [], testingServices = [] }) => {
   );
 };
 
-export const DivWrapper = () => {
-  const [lab, setLabs] = useState([]);
+export const DivWrapper = ({ filters, refreshTrigger }) => {
+  console.log("refreshTrigger value:", refreshTrigger);
+  
+  const [labs, setLabs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
   const [showLabOverview, setShowLabOverview] = useState(false);
   const navigate = useNavigate();
 
+  const fetchLabs = async (reset = false) => {
+    if (loading || (!hasMore && !reset)) return;
+  
+    setLoading(true);
+    try {
+      const query = new URLSearchParams();
+  
+      // Add pagination
+      query.append("page", reset ? 1 : page);
+      query.append("limit", 10);
+  
+      // Add filters dynamically
+      Object.entries(filters || {}).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((val) => query.append(key, val));
+        } else if (value) {
+          query.append(key, value);
+        }
+      });
+  
+      const response = await axios.get(
+        `http://localhost:8080/api/labs/list?${query.toString()}`
+      );
+  
+      if (!response.data.success) {
+        console.error("API returned error:", response.data.message);
+        return;
+      }
+  
+      const newLabs = response.data.data;
+      console.log("Fetched labs:", newLabs);
+
+      if (reset) {
+        setLabs(newLabs);
+        setPage(2);
+      } else {
+        setLabs((prev) => [...prev, ...newLabs]);
+        setPage((prev) => prev + 1);
+        setHasMore(newLabs.length === 10);
+      }
+  
+    } catch (error) {
+      console.error("Error fetching lab data", error);
+    } finally {
+      setLoading(false);
+    }
+  };  
+
+  // Initial fetch or refresh
   useEffect(() => {
-    const fetchLabs = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/api/labs");
-        console.log("Labs fetched:", response.data); // 👈 Check the structure
-        setLabs(response.data.data);
-      } catch (error) {
-        console.error("Error fetching lab data", error);
+    console.log("Triggered fetch due to filter/refresh change");
+    fetchLabs(true); // Reset labs on trigger
+  }, [filters, refreshTrigger]);  
+
+  // Infinite scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const bottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      if (bottom && hasMore && !loading) {
+        fetchLabs();
       }
     };
 
-    fetchLabs();
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasMore, loading]);
 
-  // const navigate = useNavigate();
-  // function handleClick(labId) {
-  //   navigate(`/lab/${labId}`);
-  // };
+  const handleViewProfileClick = (labId) => {
+    setShowLabOverview(true);
+    navigate(`/lab/${labId}`);
+  };
+
   return (
     <>
       {showLabOverview ? (
         <LabOverview />
       ) : (
-        <div className="flex flex-col w-[1580px] items-start gap-5 absolute top-[441px] left-[60px]">
-          {lab.length === 0 ? (
-            <div>Loading labs...</div>
+        <div className="flex flex-col w-[1060px] items-start gap-5 mt-[20px] ml-[40px]">
+          {labs.length === 0 ? (
+            <div>No labs found</div>
           ) : (
-            lab.map((lab) => (
+            labs.map((lab) => (
               <div
                 key={lab.id}
-                className="flex flex-col w-[1060px] h-[auto] items-start gap-2.5 p-8 relative bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]"
+                className="flex flex-col w-[1060px] items-start gap-2.5 p-8 bg-white mb-7 rounded-2xl border border-[#cbcbcb] shadow-[0px_0px_15px_#0000000d]"
               >
+                {/* Top Section */}
                 <div className="flex items-end w-full">
                   <img
                     className="w-[106px] h-[106px] object-cover"
@@ -154,6 +206,7 @@ export const DivWrapper = () => {
                         </div>
                       </div>
                     </div>
+
                     <div className="mt-4 grid grid-cols-2 gap-8">
                       <div>
                         <div className="flex items-center gap-2 mb-2">
@@ -213,7 +266,6 @@ export const DivWrapper = () => {
                       </div>
                     </div>
 
-                    {/* Lab Info Section Inserted Here */}
                     <div className="mt-4">
                       <LabInfoSection
                         industries={lab.industries}
@@ -222,6 +274,8 @@ export const DivWrapper = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Action Buttons */}
                 <div className="flex gap-2 mt-6">
                   <div className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer">
                     <img
@@ -233,9 +287,9 @@ export const DivWrapper = () => {
                       Delete
                     </div>
                   </div>
-                  <button onClick={() => navigate(`/lab/${lab.id}`)}
+                  <button
+                    onClick={() => handleViewProfileClick(lab.id)}
                     className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer"
-                    
                   >
                     <img
                       className="w-6 h-6"
@@ -246,7 +300,10 @@ export const DivWrapper = () => {
                       View Profile
                     </div>
                   </button>
-                  <div className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer">
+                  <button
+                    onClick={() => handleViewProfileClick(lab.id)}
+                    className="flex w-[317px] items-center justify-center gap-2 py-1 border border-[#dddddd] rounded-2xl cursor-pointer"
+                  >
                     <img
                       className="w-6 h-6"
                       alt="Quote"
@@ -255,10 +312,20 @@ export const DivWrapper = () => {
                     <div className="text-sm text-[#6161ff] font-medium">
                       Get Quote
                     </div>
-                  </div>
+                  </button>
                 </div>
               </div>
             ))
+          )}
+          {/* "No more labs" message */}
+          {!hasMore && !loading && labs.length > 0 && (
+            <div className="text-center w-full mb-6 py-4">
+             // No more labs to display....//
+            </div>
+          )}
+
+          {loading && (
+            <div className="text-center w-full py-4">Loading labs...</div>
           )}
         </div>
       )}
