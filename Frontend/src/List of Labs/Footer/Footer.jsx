@@ -2,14 +2,14 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="absolute w-[1600px] h-[342px] top-[2028px] left-10 bg-[#f6f6f6] overflow-hidden">
-      <div className="absolute w-[1600px] h-12 top-[295px] left-0 bg-[#e83939]">
-        <div className="flex w-[1550px] items-center justify-between relative top-[5px] left-[31px]">
+    <footer className="relative w-full h-[342px] bg-[#f6f6f6] overflow-hidden">
+      <div className="absolute w-full h-12 top-[295px] left-0 bg-[#e83939]">
+        <div className="flex w-[1550px] items-center relative top-[5px] left-[31px]">
           <div className="w-fit mt-[7px]  font-semibold text-white text-base tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
             © TheDailyCompliance 2025
           </div>
 
-          <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+          <div className="inline-flex items-center gap-2 ml-[850px] relative flex-[0_0_auto]">
             <div className="w-fit mt-[7px] font-medium text-white text-base tracking-[0] leading-[normal] relative [font-family:'Nunito_Sans',Helvetica]">
               All rights received
             </div>
@@ -37,7 +37,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="flex w-[1490px] items-start justify-between absolute top-[30px] left-[31px]">
+      <div className="flex w-[1490px] items-start justify-content-between absolute top-[30px] left-[31px]">
         <div className="inline-flex flex-col h-[223px] items-start justify-between relative flex-[0_0_auto]">
           <div className="inline-flex flex-col items-start gap-6 relative flex-[0_0_auto]">
             <div className="inline-flex items-end gap-3 relative flex-[0_0_auto]">
@@ -52,7 +52,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <p className="w-[563px] font-normal mt-5 mb-5 text-neutral-700 text-sm leading-6 relative [font-family:'Nunito_Sans',Helvetica] tracking-[0]">
+            <p className="w-[565px] font-normal mt-5 mb-5 text-neutral-700 text-sm leading-6 relative [font-family:'Nunito_Sans',Helvetica] tracking-[0]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               pellentesque, sapien&nbsp;&nbsp;vestibulum sollicitudin, nulla est
               condimentum ligula, at malesuada nisl sem nec lectus. Fusce vel
@@ -127,7 +127,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex w-[565px] items-center justify-between relative">
+        <div className="flex w-[565px] ml-[300px] items-center justify-between relative">
           <div className="flex flex-col w-[101px] items-start gap-3 relative">
             <div className="self-stretch mt-[-1.00px] font-bold text-[#252525] text-xl leading-[normal] relative [font-family:'Nunito_Sans',Helvetica] tracking-[0]">
               Company
