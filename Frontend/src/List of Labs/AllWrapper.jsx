@@ -1,256 +1,185 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import qs from 'qs';
 
-export const AllWrapper = ({onClose}) => {
-  const [isVisible, setIsVisible] = useState(true); // <-- visibility state
+export const AllWrapper = ({ onClose, onApplyFilters }) => {
+  const [activeCategory, setActiveCategory] = useState("productCategories");
+
+  const [selectedFilters, setSelectedFilters] = useState({
+    accreditation: [],
+    industries: [],
+    testingServices: [],
+    expertise: [],
+    location: [],
+  });
+
+  const toggleFilter = (category, value) => {
+    setSelectedFilters((prev) => {
+      const alreadySelected = prev[category].includes(value);
+      return {
+        ...prev,
+        [category]: alreadySelected
+          ? prev[category].filter((v) => v !== value)
+          : [...prev[category], value],
+      };
+    });
+  };
+
+  const handleHeadingClick = (category, defaultValue) => {
+    setActiveCategory(category);
+  };
+
+  const filterOptions = {
+    accreditation: ["Authorised Representative", "Emc"],
+    industries: ["Electrical", "Mechanical", "Environmental"],
+    testingServices: ["Testing Laboratory", "Calibration Laboratory"],
+    expertise: ["Product Safety", "Radio", "Laser Safety", "Battery"],
+    location: ["Germany", "Canada", "USA", "India"],
+  };
+
+  const applyFilters = async () => {
+    try {
+      const params = {};
+      ["accreditation", "industries", "testingServices", "location"].forEach((key) => {
+        if (Array.isArray(selectedFilters[key]) && selectedFilters[key].length) {
+          params[key] = selectedFilters[key].join(",");
+        }
+      });
+  
+      console.log("Sending request with filters:", params);
+  
+      const response = await axios.get("http://localhost:8080/api/lab-overview/filter", {
+        params,
+        paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'comma' })
+      });
+  
+      console.log("Filtered labs:", response.data.data);
+  
+      // ✅ Trigger parent callback
+      if (onApplyFilters) {
+        onApplyFilters(selectedFilters);  // <--- SEND TO PARENT
+      }
+  
+    } catch (err) {
+      console.error("Error fetching labs:", err);
+    }
+  };  
+
+  const clearFilters = () => {
+    setSelectedFilters({
+      accreditation: [],
+      industries: [],
+      testingServices: [],
+      expertise: [],
+      location: [],
+    });
+  };
+
+  const renderTag = (category, label) => (
+    <div
+      key={`${category}-${label}`}  // 👈 add key here
+      onClick={() => toggleFilter(category, label)}
+      className={`flex w-[226px] items-center gap-2.5 p-3 rounded-3xl cursor-pointer border text-sm font-normal ${
+        selectedFilters[category].includes(label)
+          ? "bg-[#6161ff] text-white border-transparent"
+          : "text-[#585858] border-[#cbcbcb]"
+      }`}
+    >
+      {label}
+    </div>
+  );
 
   return (
-    <div className="flex flex-col h-[512px] items-start gap-2.5 p-5 relative bg-white border-[0.5px] border-solid border-[#cbcbcb] overflow-x-hidden">
-      <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
-        <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
+    <div className="flex flex-col h-[512px] items-start gap-2.5 p-5 relative bg-white border border-[#cbcbcb] overflow-x-hidden">
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
           <img
-            className="relative w-6 h-6"
+            className="w-6 h-6"
             alt="Filter list"
             src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/filter-list.svg"
           />
-
-          <div className="w-[53px] h-5 font-bold text-[#202224] text-lg whitespace-nowrap relative [font-family:'Nunito_Sans',Helvetica] tracking-[-0.06px] leading-[normal]">
-            Filters
-          </div>
+          <div className="text-lg font-bold text-[#202224]">Filters</div>
         </div>
-
         <img
-          onClick={onClose} // <-- added this!
-          className="relative w-6 h-6 cursor-pointer"
+          onClick={onClose}
+          className="w-6 h-6 cursor-pointer"
           alt="X"
           src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/x-1.svg"
         />
       </div>
 
-      <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto] mb-[-17.00px]">
-        <img
-          className="self-stretch w-full h-px mt-[-1.00px] relative object-cover"
-          alt="Line"
-          src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/line-1.svg"
-        />
-
-        <div className="flex items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
-          <div className="inline-flex items-start gap-3 relative flex-[0_0_auto]">
-            <div className="inline-flex flex-col h-[447px] items-start gap-1 relative flex-[0_0_auto] bg-white">
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Features alt"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/features-alt-1.svg"
-                    />
-
-                    <div className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-[#474747] text-base tracking-[-0.06px] leading-[normal]">
-                      Lab Accreditation
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="inline-flex flex-col items-start justify-center px-2 py-3 relative flex-[0_0_auto] border-l-[3px] [border-left-style:dashed] border-[#e93a3a]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Category"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/category.svg"
-                    />
-
-                    <div className="w-fit font-semibold text-[#e93a3a] text-base relative [font-family:'Nunito_Sans',Helvetica] tracking-[-0.06px] leading-[normal]">
-                      Business Categories
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto] rounded-[0px_24px_0px_0px]">
-                <div className="flex items-start gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Flask gear"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/flask-gear.svg"
-                    />
-
-                    <div className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-[#474747] text-base tracking-[-0.06px] leading-[normal]">
-                      Testing Services
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Memo pad"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/memo-pad.svg"
-                    />
-
-                    <div className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-[#474747] text-base tracking-[-0.06px] leading-[normal]">
-                      Product Categories
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Note"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/note.svg"
-                    />
-
-                    <div className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-[#474747] text-base tracking-[-0.06px] leading-[normal]">
-                      Standards Filter
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="inline-flex items-center gap-2 relative flex-[0_0_auto]">
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Earth americas"
-                      src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/earth-americas.svg"
-                    />
-
-                    <div className="relative w-fit [font-family:'Nunito_Sans',Helvetica] font-normal text-[#474747] text-base tracking-[-0.06px] leading-[normal]">
-                      Regions Filter
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]" />
-
-              <div className="flex flex-col w-[238px] items-start px-2 py-3 relative flex-[0_0_auto]">
-                <div className="flex items-center gap-[49px] relative self-stretch w-full flex-[0_0_auto]" />
-              </div>
+      <div className="flex flex-row gap-3 w-full">
+        <div className="flex flex-col gap-1 w-[238px]">
+          {[
+            {
+              key: "accreditation",
+              label: "Lab Accreditation",
+              icon: "features-alt-1.svg",
+            },
+            {
+              key: "industries",
+              label: "Business Categories",
+              icon: "category.svg",
+            },
+            {
+              key: "testingServices",
+              label: "Testing Services",
+              icon: "flask-gear.svg",
+            },
+            {
+              key: "expertise",
+              label: "Expertise",
+              icon: "memo-pad.svg",
+            },
+            {
+              key: "location",
+              label: "Location",
+              icon: "note.svg",
+            },
+          ].map(({ key, label, icon }) => (
+            <div
+              key={key}
+              className={`px-2 py-3 flex items-center gap-2 cursor-pointer ${
+                activeCategory === key
+                  ? "border-l-[3px] border-dashed border-[#e93a3a] font-semibold text-[#e93a3a]"
+                  : "text-[#474747]"
+              }`}
+              onClick={() => handleHeadingClick(key)}  // ✅ Only set active category
+            >
+              <img
+                className="w-6 h-6"
+                src={`https://c.animaapp.com/ma1aqe6wFlEgiX/img/${icon}`}
+                alt={label}
+              />
+              <span className="text-base">{label}</span>
             </div>
+          ))}
+        </div>
 
-            <img
-              className="w-px h-[432px] relative object-cover"
-              alt="Line"
-              src="https://c.animaapp.com/ma1aqe6wFlEgiX/img/line-2.svg"
-            />
-
-            <div className="flex flex-col w-[458px] h-[432px] items-center justify-between relative">
-              <div className="inline-flex flex-col items-start gap-1.5 relative flex-[0_0_auto]">
-                <div className="inline-flex items-start gap-1.5 relative flex-[0_0_auto]">
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative bg-[#6161ff] rounded-3xl">
-                    <div className="mt-[-1.00px] font-bold text-white text-sm relative w-fit [font-family:'Nunito_Sans',Helvetica] tracking-[-0.05px] leading-[normal]">
-                      Product Safety
-                    </div>
-                  </div>
-
-                  <div className="flex w-[225px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Radio
-                    </div>
-                  </div>
-                </div>
-
-                <div className="inline-flex items-start gap-1.5 relative flex-[0_0_auto]">
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Laser Safety
-                    </div>
-                  </div>
-
-                  <div className="flex w-[225px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Battery
-                    </div>
-                  </div>
-                </div>
-
-                <div className="inline-flex items-start gap-1.5 relative flex-[0_0_auto]">
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Testing Laboratory
-                    </div>
-                  </div>
-
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Calibration Laboratory
-                    </div>
-                  </div>
-                </div>
-
-                <div className="inline-flex items-start gap-1.5 relative flex-[0_0_auto]">
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Authorised Representative
-                    </div>
-                  </div>
-
-                  <div className="flex w-[226px] items-center gap-2.5 p-3 relative rounded-3xl border-[0.5px] border-solid border-[#cbcbcb]">
-                    <div className="relative w-fit mt-[-0.50px] [font-family:'Nunito_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[-0.05px] leading-[normal]">
-                      Emc
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="inline-flex items-start gap-1.5 relative flex-[0_0_auto]">
-                <div className="flex w-56 items-center justify-center gap-2.5 p-3 relative rounded-3xl border border-solid border-[#e93a3a]">
-                  <div className="mt-[-1.00px] font-medium text-[#e93a3a] text-base relative w-fit [font-family:'Nunito_Sans',Helvetica] tracking-[-0.05px] leading-[normal]">
-                    Clear
-                  </div>
-                </div>
-
-                <div className="flex w-56 items-center justify-center gap-2.5 p-3 relative bg-[#e93a3a] rounded-3xl">
-                  <div className="mt-[-0.50px] font-medium text-white text-base relative w-fit [font-family:'Nunito_Sans',Helvetica] tracking-[-0.05px] leading-[normal]">
-                    Apply
-                  </div>
-                </div>
-              </div>
+        <div className="flex flex-col gap-3 w-[458px]">
+          <div className="flex flex-wrap gap-1.5">
+          {filterOptions[activeCategory]?.map((label) =>
+            renderTag(activeCategory, label)
+          )}
+          </div>
+          <div className="flex gap-1.5">
+            <div
+              onClick={clearFilters}
+              className="flex w-56 items-center justify-center p-3 rounded-3xl border border-[#e93a3a] cursor-pointer"
+            >
+              <span className="text-base font-medium text-[#e93a3a]">
+                Clear
+              </span>
+            </div>
+            <div
+              onClick={applyFilters}
+              className="flex w-56 items-center justify-center p-3 bg-[#e93a3a] rounded-3xl cursor-pointer"
+            >
+              <span className="text-base font-medium text-white">Apply</span>
             </div>
           </div>
         </div>
       </div>
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
-
-      <img
-        className="relative self-stretch w-full h-px mt-[-10490.00px] mr-[-5378.00px] object-cover"
-        alt="Line"
-      />
     </div>
   );
 };
