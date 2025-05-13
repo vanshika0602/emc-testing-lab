@@ -1,10 +1,9 @@
-// controllers/labOverviewController.js
 const mongoose = require('mongoose');
-const Lab = require('../../models/labsModel');
+const Lab = require('../models/labsModel');
 
 exports.getLabDescription = async (req, res) => {
     const labId = req.params.labId;
-    console.log('Received lab ID:', labId);
+    console.log('Received lab ID:', labId); // Check what labId is received
 
     if (!mongoose.Types.ObjectId.isValid(labId)) {
         return res.status(400).json({ success: false, message: "Invalid lab ID" });
@@ -26,50 +25,58 @@ exports.getLabDescription = async (req, res) => {
     }
 };
 
+// controllers/apiController.js
+
+// Filter Labs based on multiple criteria
 exports.filterLabs = async (req, res) => {
-    const filters = {};
+  console.log("Received filters:", req.query);
+  const { accreditation, industries, testingServices, regions } = req.query;
 
-    // Extract filters from query params
-    const {
-        company_name,
-        location,
-        expertise,
-        accreditation,
-        industries,
-        testingServices
-    } = req.query;
+  // Check if no filters are provided
+  if (!accreditation && !industries && !testingServices && !regions) {
+    return res.status(400).json({
+      success: false,
+      message: "No filters provided. Please select at least one filter.",
+    });
+  }
 
-    // Add filters to the query object based on the incoming request
-    if (company_name) {
-        filters.company_name = new RegExp(company_name, 'i');  // Case-insensitive search
-    }
-    if (location) {
-        filters.location = new RegExp(location, 'i');  // Case-insensitive search
-    }
-    if (expertise) {
-        filters.expertise = new RegExp(expertise, 'i');  // Case-insensitive search
-    }
-    if (accreditation) {
-        filters.accreditation = new RegExp(accreditation, 'i');  // Case-insensitive search
-    }
-    if (industries) {
-        // Assuming industries is an array, we'll filter by the array
-        filters.industries = { $all: industries.split(',') };  // Example: industries=Automotive,Electronics
-    }
-    if (testingServices) {
-        // Assuming testingServices is an array, we'll filter by the array
-        filters.testingServices = { $all: testingServices.split(',') };  // Example: testingServices=SAR,ESD
+  const filters = {};
+
+  if (accreditation) {
+    filters.accreditation = { $in: accreditation.split(',') };
+  }
+
+  if (industries) {
+    filters.industries = { $in: industries.split(',') };
+  }
+
+  if (testingServices) {
+    filters.testingServices = { $in: testingServices.split(',') };
+  }
+
+  if (regions) {
+    filters['profile_menu.additional_location.country'] = { $in: regions.split(',') };
+  }
+
+  try {
+    // Find labs based on the filters without pagination
+    const labs = await Lab.find(filters).populate("user_id", "email");
+
+    if (!labs.length) {
+      return res.status(404).json({ success: false, message: "No labs found matching the filters" });
     }
 
-    try {
-        const labs = await Lab.find(filters);
+    const transformedLabs = labs.map((lab) => {
+      const labObj = lab.toObject({ versionKey: false });
+      const { _id, ...rest } = labObj;
+      return { id: _id.toString(), ...rest };
+    });
 
-        if (labs.length === 0) {
-            return res.status(404).json({ success: false, message: 'No labs found matching the filters' });
-        }
-
-        res.status(200).json({ success: true, data: labs });
-    } catch (err) {
-        res.status(500).json({ success: false, message: err.message });
-    }
+    res.status(200).json({
+      success: true,
+      data: transformedLabs,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };
