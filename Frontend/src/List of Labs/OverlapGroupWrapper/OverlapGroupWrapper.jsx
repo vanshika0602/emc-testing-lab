@@ -2,7 +2,7 @@ import React from "react";
 
 export const OverlapGroupWrapper = () => {
   return (
-    <div className="absolute w-[353px] h-[656px] top-[441px] left-[1250px] rounded-2xl overflow-hidden border-[0.5px] border-solid border-[#cbcbcb]">
+    <div className="absolute w-[353px] h-[656px] top-[441px] left-[1150px] rounded-2xl overflow-hidden border-[0.5px] border-solid border-[#cbcbcb]">
       <div className="relative w-[358px] h-[814px] bg-[#d9d9d9] rounded-2xl">
         <img
           className="absolute w-[400px] h-[656px] top-0 left-0"
