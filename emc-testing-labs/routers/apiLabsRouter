@@ -1,11 +1,13 @@
 const express = require('express');
 const apiRouter = express.Router();
 const labController = require('../controllers/apiController');
+const labControllers = require('../controllers/labController');
+
+//Get all labs
+apiRouter.get("/filter", labControllers.getAllLabs);
 
 // Get Lab for the requested ID
 apiRouter.get('/:labId', labController.getLabDescription);
 
-// Get filtered values
-apiRouter.get('/filter', labController.filterLabs);
 
 module.exports = apiRouter;
