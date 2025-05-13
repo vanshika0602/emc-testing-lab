@@ -14,9 +14,9 @@ export const Frame = () => {
           console.error("Lab ID is missing");
           return;
         }
-  
-        const res = await axios.get(`http://localhost:8080/api/labs/${labId}`);
-        setLab(res.data);  // This updates the state 'lab' with the response data
+        
+        const res = await axios.get(`http://localhost:8080/api/lab-overview/${labId}`);
+        setLab(res.data.data);  // This updates the state 'lab' with the response data
       } catch (err) {
         console.error("Error fetching lab data", err);
       }
@@ -29,7 +29,7 @@ export const Frame = () => {
 
   if (!lab) return <div>Loading...</div>;
 
-  return lab.data.map((lab) => (
+  return  (
     <div
       key={lab.id}
       className="flex flex-col w-[1375px] items-start gap-2.5 p-5 absolute top-[193px] left-[30px] bg-white rounded-2xl border-[0.5px] border-solid border-[#cbcbcb] shadow-[0px_0px_15px_#00000008]"
@@ -214,5 +214,5 @@ export const Frame = () => {
         </div>
       </div>
     </div>
-  ));
+  );
 };
