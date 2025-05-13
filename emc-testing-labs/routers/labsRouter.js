@@ -3,13 +3,10 @@ const router = express.Router();
 const labController = require('../controllers/labController'); // Adjust path as needed
 
 // Create a new lab
-router.post('/', labController.createLab);
+router.post('/create', labController.createLab);
 
 // Get all labs
-router.get('/', labController.getAllLabs);
-
-// Get labs profile
-router.get('/labs/:labId', labController.getLabDescription);
+router.get('/list', labController.getAllLabs);
 
 // You can also add other routes like get by ID, update, delete in future
 
