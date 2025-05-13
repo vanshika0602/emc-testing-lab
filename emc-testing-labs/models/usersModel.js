@@ -15,22 +15,6 @@ const userSchema = mongoose.Schema({
         trim: true,
         select: false
     },
-    verified: {
-        type: Boolean,
-        default: false,
-    },
-    verificationCodeValidation: {
-        type: String,
-        select: false,
-    },
-    forgotPasswordCode: {
-        type: String,
-        select: false,
-    },
-    forgotPasswordCodeValidation: {
-        type: String,
-        select: false,
-    }
 },{
     timestamps: true
 });
